@@ -7,6 +7,6 @@ docker service create --name redis --network frontend redis:3.2
 
 docker service create --name worker --network frontend --network backend bretfisher/examplevotingapp_worker:java
 
-docker service create --name db --network --network backend -e POSTGRES_HOST_AUTH_METHOD=trust --mount type=volume,source=db-data,target=/var/lib/postgresql/data postgres:9.4
+docker service create --name db --network backend -e POSTGRES_HOST_AUTH_METHOD=trust --mount type=volume,source=db-data,target=/var/lib/postgresql/data postgres:9.4
 
 docker service create --name result --network backend -p 4001:80  bretfisher/examplevotingapp_result
